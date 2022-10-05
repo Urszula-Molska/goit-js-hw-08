@@ -1,0 +1,2 @@
+const e=document.querySelector(".feedback-form"),t=document.querySelector("input"),a=document.querySelector("textarea");e.addEventListener("submit",(function(e){if(e.preventDefault(),""===userEmail||""===userMessage)return alert("Please fill in all the fields!")}));const r={email:email,message:message};t.addEventListener("input",(e=>{e.currentTarget.value=r.email})),a.addEventListener("input",(e=>{e.currentTarget.value=r.message})),localStorage.setItem("feedback-form-state",JSON.stringify(r));
+//# sourceMappingURL=03-feedback.cfcb5598.js.map
