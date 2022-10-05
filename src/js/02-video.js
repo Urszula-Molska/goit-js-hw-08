@@ -45,7 +45,9 @@ player
     }
   });
 
-/*const onPlay = function(data) {
+/*Z DOKUMENTACJI
+
+const onPlay = function(data) {
     // data is an object containing properties specific to that event
 };
 
