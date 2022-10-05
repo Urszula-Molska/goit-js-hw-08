@@ -6,22 +6,24 @@ form.addEventListener('submit', formCheck);
 
 function formCheck(event) {
   event.preventDefault();
-  if (userEmail === '' || userMessage === '') {
+  if (input.value === '' || textarea.value === '') {
     return alert('Please fill in all the fields!');
   }
 }
 
+let email = '';
+let message = '';
 const userCredentials = { email, message };
 
 input.addEventListener('input', event => {
-  event.currentTarget.value = userCredentials.email;
+  userCredentials.email = form.elements.email.value;
+  localStorage.setItem('feedback-form-state', JSON.stringify(userCredentials));
 });
 
 textarea.addEventListener('input', event => {
-  event.currentTarget.value = userCredentials.message;
+  userCredentials.message = event.currentTarget.value;
+  localStorage.setItem('feedback-form-state', JSON.stringify(userCredentials));
 });
-
-localStorage.setItem('feedback-form-state', JSON.stringify(userCredentials));
 
 /*const userCredentials = {
   email: userEmail,
