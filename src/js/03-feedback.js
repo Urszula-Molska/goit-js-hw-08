@@ -16,18 +16,13 @@ let message = '';
 const userCredentials = { email, message };
 
 input.addEventListener('input', event => {
+  //const userCredentials = { email: input.value, message: textarea.value };
   userCredentials.email = form.elements.email.value;
   localStorage.setItem('feedback-form-state', JSON.stringify(userCredentials));
 });
 
 textarea.addEventListener('input', event => {
+  //const userCredentials = { email: input.value, message: textarea.value };
   userCredentials.message = event.currentTarget.value;
   localStorage.setItem('feedback-form-state', JSON.stringify(userCredentials));
 });
-
-/*const userCredentials = {
-  email: userEmail,
-  message: userMessage,
-};*/
-
-//event.preventDefault();
