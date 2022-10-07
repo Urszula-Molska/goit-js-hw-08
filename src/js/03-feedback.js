@@ -7,20 +7,24 @@ let email = '';
 let message = '';
 const userCredentials = { email, message };
 
-input.addEventListener('input', event => {
-  //const userCredentials = { email: input.value, message: textarea.value };
+//userCredentials.message = event.currentTarget.value;
+//const userCredentials = { email: input.value, message: textarea.value };
+
+textarea.addEventListener('input', throttle(saveMessage, 500));
+function saveMessage() {
+  userCredentials.message = form.elements.message.value;
+  localStorage.setItem('feedback-form-state', JSON.stringify(userCredentials));
+}
+
+input.addEventListener('input', throttle(saveInput, 500));
+function saveInput() {
   userCredentials.email = form.elements.email.value;
   localStorage.setItem('feedback-form-state', JSON.stringify(userCredentials));
-});
-
-textarea.addEventListener('input', event => {
-  //const userCredentials = { email: input.value, message: textarea.value };
-  userCredentials.message = event.currentTarget.value;
-  localStorage.setItem('feedback-form-state', JSON.stringify(userCredentials));
-});
+}
 
 const savedUserCredentials = localStorage.getItem('feedback-form-state');
 const parsedUserCredentials = JSON.parse(savedUserCredentials);
+
 const updateCredentials = () => {
   if (localStorage.getItem('feedback-form-state') === null) {
     return;
