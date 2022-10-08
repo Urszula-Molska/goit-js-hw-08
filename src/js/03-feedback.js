@@ -25,15 +25,21 @@ function saveInput() {
 const savedUserCredentials = localStorage.getItem('feedback-form-state');
 const parsedUserCredentials = JSON.parse(savedUserCredentials);
 
-const updateCredentials = () => {
-  if (localStorage.getItem('feedback-form-state') === null) {
-    return;
-  } else {
-    form.elements.email.value = parsedUserCredentials.email;
-    form.elements.message.value = parsedUserCredentials.message;
-  }
-};
+if (localStorage.length > 0) {
+  userCredentials.email = parsedUserCredentials.email;
+  userCredentials.message = parsedUserCredentials.message;
+}
 
+function updateCredentials() {
+  input.value =
+    parsedUserCredentials.email !== undefined
+      ? (input.value = parsedUserCredentials.email)
+      : '';
+  textarea.value =
+    parsedUserCredentials.message !== undefined
+      ? (textarea.value = parsedUserCredentials.message)
+      : '';
+}
 updateCredentials();
 
 form.addEventListener('submit', formCheck);
